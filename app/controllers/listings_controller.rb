@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
 
   def new
 
-    @listing=Listing.new
+    @listing = Listing.new
 
   end
 
@@ -21,7 +21,7 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.new(listing_params)
 
     if @listing.save
-      # I want o go to my listing show page
+      # I want to go to my listing show page
        redirect_to listings_path(@listing.id) # This is the way to pass in an id
     else
       redirect_to new_listing_path
@@ -33,22 +33,18 @@ class ListingsController < ApplicationController
 
 
 
-
-
-
-
  # We put this in private so nobody can see the all params
 
   private
   # The following method is called strong params see google
   def listing_params
-    params.require(:listing).permit(:title, :location, :description, :price_per_night, :nb_room, :issmoker, :haslatecheckout, :haskitchen, :haswifi, :hasswimmingpool, :user_id)
+    params.require(:listing).permit(:title, :location, :description, :price_per_night, :nb_room, :isSmoker, :hasLatecheckout, :hasKitchen, :hasWifi, :hasSwimmingpool, :user_id)
 
   end
 
   def set_listing
-    @listing = listing.find(params[:id])
-
+    @listing = Listing.find(params[:id]) # originally listing, but I changed with Listing
+ 
   end
 
   # This prevents us to retype it for every other method

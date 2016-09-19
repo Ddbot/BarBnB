@@ -6,13 +6,13 @@ class CreateListings < ActiveRecord::Migration
       t.string :description
       t.float :price_per_night, null: false
       t.string :photo
-      t.integer :nb_room
-      t.boolean :issmoker, default: false
-      t.boolean :ispetfriendly, default: false
-      t.boolean :haslatecheckout
-      t.boolean :haskitchen
-      t.boolean :haswifi
-      t.boolean :hasswimmingpool
+      t.integer :nb_rooms
+      t.boolean :isSmoker, default: false
+      t.boolean :isPetFriendly, default: false
+      t.boolean :hasLatecheckout
+      t.boolean :hasKitchen
+      t.boolean :hasWifi
+      t.boolean :hasSwimmingPool
       t.integer :user_id
       t.timestamps null: false
     end

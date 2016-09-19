@@ -1,4 +1,29 @@
+<div class="container">
 <%@listing.each do |l|%>
-<br>
-LOCATION: <%=l.location %>
+<div class="card is-inline-flex">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="https://unsplash.it/300/225/?random" alt=""> <!-- WILL BE l.photo when it is really populated -->
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-32x32">
+          <img src="https://unsplash.it/64/64/?random" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-5">Listing no.<%= l.id %></p>
+      </div>
+    </div>
+
+    <div class="content"><%= truncate(l.description) %><br><a href="/users/<%= l.user_id %>">Read Owner's Profile</a>.
+      <a href="#">#travel</a> <a href="#">#dream</a>
+      <br>
+      <small>11:09 PM - 1 Jan 2016</small>
+    </div>
+  </div>
+</div>
 <%end%>
+</div>
