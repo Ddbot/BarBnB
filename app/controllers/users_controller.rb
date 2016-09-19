@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   	return set_user
   end
 
+  def index
+    @user = User.all 
+  end
+
 
     private
   # The following method is called strong params see google
@@ -12,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id]) # originally listing, but I changed with Listing
- 
-  end
+    @user = User.find(params[:id])
+   end
 end

@@ -1,5 +1,4 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>User No.<%= @user.id %>'s Profile</h1>
 
 <div class="box">
   <article class="media">
@@ -32,3 +31,37 @@
     </div>
   </article>
 </div>
+<br>
+
+<h1>User No.<%= @user.id %>'s Listings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Description</th>
+      <th>No Of Rooms</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Description</th>
+      <th>No. Of Rooms</th>
+    </tr>
+  </tfoot>
+  <tbody>
+  <% Listing.all.each do |l| %>
+  <% if l.user_id == @user.id %>
+    <tr>
+      <td><%= l.title %></td>
+      <td><%= l.location %></td>
+      <td><%= l.description %></td>
+      <td><%= l.nb_rooms %></td>
+    </tr>
+   <% end %>
+<% end %>   
+  </tbody>
+</table>

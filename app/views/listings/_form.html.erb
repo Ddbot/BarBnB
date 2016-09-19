@@ -1,59 +1,65 @@
-  <div class="form-group">
-    <%= form.label :Title %>
-    <%= form.text_field :title, placeholder: "Enter Title", class: "form-control", id: "title" %>
-  </div>
+<div class="control is-vertical">
+    <%= form.label :Title, class:"label" %>
+    <%= form.text_field :title, placeholder: "Enter Title", class: "input is-big", id: "title" %>
 
-  <div class="form-group">
-    <%= form.label :Location %>
-    <%= form.text_field :location, placeholder: "Enter Location", class: "form-control", id: "location" %>
-  </div>
 
-  <div class="form-group">
+
+    <%= form.label :Location, class:"label" %>
+    <%= form.text_field :location, placeholder: "Enter Location", class: "input is-grouped", id: "location" %>
+
+</div>
+  <div class="control">
     <%= form.label :Description %>
-    <%= form.text_area :description, placeholder: "Enter description", class: "form-control", rows: "5", id: "description" %>
+    <%= form.text_area :description, placeholder: "Enter description", class: "textarea", id: "description" %>
   </div>
+
+<!--   <div class="form-group"> -->
+    <%= form.label "Number of rooms" %>
+    <%= form.number_field :nb_rooms, class: "form-control", id: "nb_room", min:"1", max:"10" %>
+  <!-- </div> -->  
+
 
   <div class="form-group">
     <%= form.label "Price per night" %>
     <%= form.text_field :price_per_night, class: "form-control", id: "price_per_night" %>
-  </div>
+  <!-- </div> -->
 
-  <div class="form-group">
+<!--   <div class="form-group"> -->
     <%= form.label "Upload your photos" %>
     <%= form.text_field :photo, class: "form-control", id: "photo" %>
   </div>
 
-  <div class="form-group">
-    <%= form.label "Number of rooms" %>
-    <%= form.text_field :nb_rooms, class: "form-control", id: "nb_room" %>
-  </div>
+
 
   <div class="form-group">
     <%= form.label "Smokers friendly" %>
-    <%= form.check_box :isSmoker, class: "form-control", id: "issmoker" %>
-  </div>
+    <%= form.check_box :isSmoker, class: "form-control", id: "issmoker" %> |
+  <!-- </div> -->
 
-  <div class="form-group">
+<!--   <div class="form-group"> -->
     <%= form.label "We accept pets" %>
-    <%= form.check_box :isPetFriendly, class: "form-control", id: "ispetfriendly" %>
-  </div>
+    <%= form.check_box :isPetFriendly, class: "form-control", id: "ispetfriendly" %> 
+  <!-- </div> -->
+<br>
+<!--   <div class="form-group"> -->
+   <%= form.label "Allow check out at 2pm" %> 
+    <%= form.check_box :hasLatecheckout, class: "form-control", id: "haslatecheckout" %> |
+  <!-- </div> -->
 
-  <div class="form-group">
-   <%= form.label "Allow check out at 2pm" %>
-    <%= form.check_box :hasLatecheckout, class: "form-control", id: "haslatecheckout" %>
-  </div>
-
-  <div class="form-group">
+<!--   <div class="form-group"> -->
     <%= form.label "Kitchen + appliances" %>
-    <%= form.check_box :hasKitchen, class: "form-control", id: "haskitchen" %>
-  </div>
+    <%= form.check_box :hasKitchen, class: "form-control", id: "haskitchen" %> |
+  <!-- </div> -->
 
-  <div class="form-group">
+<br>
+
+<!--   <div class="form-group"> -->
     <%= form.label "Wifi available" %>
-    <%= form.check_box :hasWifi, class: "form-control", id: "haswifi" %>
-  </div>
+    <%= form.check_box :hasWifi, class: "form-control", id: "haswifi" %> |
+  <!-- </div> -->
 
-  <div class="form-group">
+<!--   <div class="form-group"> -->
     <%= form.label "Swimming Pool" %>
     <%= form.check_box :hasSwimmingPool, class: "form-control", id: "hasswimmingpool" %>
   </div>
+

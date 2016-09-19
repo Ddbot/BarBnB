@@ -1,7 +1,12 @@
 <section>
-    <div class="row" >
-
-      <a href="/listings/new">Create a listing</a>
-    </div>
+<table class="table is-bordered is-striped is-narrow">
+	<th col="2">Email</th>
+	<th>ID</th>	
+    <% User.all.each do |u| %>
+    <tr>
+    	<td><%= u.email %></td><td><%= u.id %></td>
+    </tr>  
+    <% end %>
+</table>
 </section>
 

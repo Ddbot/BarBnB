@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  get 'home/index'
+  # get 'home/index'
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+  get "/users" => "users#index"
 
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :listings
