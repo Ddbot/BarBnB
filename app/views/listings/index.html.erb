@@ -3,7 +3,9 @@
 <div id="l_card" class="card is-inline-block">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img src="https://unsplash.it/300/225/?random" alt=""> <!-- WILL BE l.photo when it is really populated -->
+    <%if l.avatars.present? %>
+      <img src="<%=l.avatars[0].large.url%>" alt=""> <!-- WILL BE l.photo when it is really populated -->
+      <%end%>
     </figure>
   </div>
   <div class="card-content">

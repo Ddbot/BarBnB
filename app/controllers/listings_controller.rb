@@ -19,10 +19,10 @@ class ListingsController < ApplicationController
   def create
 
     @listing = current_user.listings.new(listing_params)
-
+    
     if @listing.save
       # I want to go to my listing show page
-       redirect_to listings_path(@listing.id) # This is the way to pass in an id
+       redirect_to listing_path(@listing.id) # This is the way to pass in an id
     else
       redirect_to new_listing_path
     end
@@ -42,7 +42,7 @@ class ListingsController < ApplicationController
   private
   # The following method is called strong params see google
   def listing_params
-    params.require(:listing).permit(:title, :location, :description, :price_per_night, :photo, :nb_rooms, :isSmoker, :hasLatecheckout, :hasKitchen, :hasWifi, :hasSwimmingPool, :user_id, :isPetFriendly)
+    params.require(:listing).permit(:title, :location, :description, :price_per_night, :photo, :nb_rooms, :isSmoker, :hasLatecheckout, :hasKitchen, :hasWifi, :hasSwimmingPool, :user_id, :isPetFriendly,{avatars:[]})
 
   end
 

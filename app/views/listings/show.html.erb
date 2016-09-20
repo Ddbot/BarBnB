@@ -1,39 +1,35 @@
-<h1 >Listing Show No.<%= @listing.id %></h1>
-
-<h2><%= @listing.title %></h2>
-
-<div class="box">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-64x64">
-        <img src="http://placehold.it/128x128" alt="Image">
-      </figure>
-    </div>
-    <div class="media-content">
-      <div class="content">
-          <strong><%= @listing.title %></strong> in <span><b><%= @listing.location %></b></span> with <small><%= @listing.nb_rooms %> rooms</small>
-          <br>
-          <%= @listing.description %>
-        </p>
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+    <%if @listing.avatars.present? %>
+        <%= image_tag (@listing.avatars[0].large.url) %>
+        <%end%>
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-32x32">
+          <img src="http://placehold.it/64x64" alt="Image">
+        </figure>
       </div>
-      <nav class="level">
-        <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-heart"></i></span>
-          </a>
-        </div>
-      </nav>
+      <div class="media-content">
+        <p class="title is-5"><%= @listing.title %></p>
+        <p class="subtitle is-6"><%= @listing.location %></p>
+      </div>
     </div>
-    <% if  @listing.user_id == session[:user_id]%>
+
+    <div class="content">
+      <%= @listing.description %><a href="#"><%= @listing.id %></a>.
+      <a href="#"><%= @listing.nb_rooms %> rooms</a> <a href="#">#responsive</a>
+      <br>
+      <small>11:09 PM - 1 Jan 2016</small>
+    </div>
+  </div>
+</div>
+<p><a href="/users/<%= @listing.user_id %>">Back to User's Profile</a></p>
+    <% if  @listing.user_id == current_user.id%>
       <form action="listings#update" method="put"><a href="/listings/<%= @listing.id %>/edit" class="button is-warning">Edit</a></form>
       <form action="listings#destroy" method="delete"><a href="/listings/<%= @listing.id %>" class="button is-danger">Delete</a></form>
     <% end %>
-  </article>
-</div>
-<p><a href="/users/<%= @listing.user_id %>">Back to User's Profile</a></p>
+ 

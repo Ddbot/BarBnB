@@ -56,3 +56,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+gem 'fog'
+	
+
