@@ -42,7 +42,7 @@ class ListingsController < ApplicationController
   private
   # The following method is called strong params see google
   def listing_params
-    params.require(:listing).permit(:title, :location, :description, :price_per_night, :nb_room, :isSmoker, :hasLatecheckout, :hasKitchen, :hasWifi, :hasSwimmingpool, :user_id)
+    params.require(:listing).permit(:title, :location, :description, :price_per_night, :photo, :nb_rooms, :isSmoker, :hasLatecheckout, :hasKitchen, :hasWifi, :hasSwimmingPool, :user_id, :isPetFriendly)
 
   end
 

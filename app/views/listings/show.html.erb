@@ -11,7 +11,6 @@
     </div>
     <div class="media-content">
       <div class="content">
-        <p>
           <strong><%= @listing.title %></strong> in <span><b><%= @listing.location %></b></span> with <small><%= @listing.nb_rooms %> rooms</small>
           <br>
           <%= @listing.description %>
@@ -31,5 +30,10 @@
         </div>
       </nav>
     </div>
+    <% if  @listing.user_id == session[:user_id]%>
+      <form action="listings#update" method="put"><a href="/listings/<%= @listing.id %>/edit" class="button is-warning">Edit</a></form>
+      <form action="listings#destroy" method="delete"><a href="/listings/<%= @listing.id %>" class="button is-danger">Delete</a></form>
+    <% end %>
   </article>
 </div>
+<p><a href="/users/<%= @listing.user_id %>">Back to User's Profile</a></p>

@@ -11,7 +11,7 @@ require 'faker'
 
 # USERS
 10.times do 
-	User.create(:email=>Faker::Internet.email,:password=>Faker::Internet.password(8))
+	User.create(:email=>Faker::Internet.email,:password=>Faker::Internet.password(8),:firstname=>Faker::Name.first_name,:lastname=>Faker::Name.last_name)
 end
 
 # LISTINGS

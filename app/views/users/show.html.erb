@@ -1,4 +1,4 @@
-<h1>User No.<%= @user.id %>'s Profile</h1>
+<h1 class="title is-1">User No.<%= @user.id %>'s Profile</h1>
 
 <div class="box">
   <article class="media">
@@ -33,35 +33,35 @@
 </div>
 <br>
 
-<h1>User No.<%= @user.id %>'s Listings</h1>
+<div class="show_list is-fullwidth">
+<h1 class="title is-1">User No.<%= @user.id %>'s Listings</h1>
+<%= Listing.all.each do |l| %>
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="http://placehold.it/300x225" alt="">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-32x32">
+          <img src="http://placehold.it/64x64" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-5"><%= l.title%></p>
+        <p class="subtitle is-6">User No.<%= l.user_id %></p>
+      </div>
+    </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Location</th>
-      <th>Description</th>
-      <th>No Of Rooms</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th>Title</th>
-      <th>Location</th>
-      <th>Description</th>
-      <th>No. Of Rooms</th>
-    </tr>
-  </tfoot>
-  <tbody>
-  <% Listing.all.each do |l| %>
-  <% if l.user_id == @user.id %>
-    <tr>
-      <td><%= l.title %></td>
-      <td><%= l.location %></td>
-      <td><%= l.description %></td>
-      <td><%= l.nb_rooms %></td>
-    </tr>
-   <% end %>
-<% end %>   
-  </tbody>
-</table>
+    <div class="content">
+		<%= l.description %>
+      <br>
+      <small>Since <%= l.created_at %></small>
+    </div>
+  </div>
+
+<% end %>
+</div>
+</div>

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container is-fullwidth">
 <%@listing.each do |l|%>
-<div class="card is-inline-flex">
+<div id="l_card" class="card is-inline-block">
   <div class="card-image">
     <figure class="image is-4by3">
       <img src="https://unsplash.it/300/225/?random" alt=""> <!-- WILL BE l.photo when it is really populated -->
@@ -14,7 +14,7 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-5"><a href="/listings/<%= l.id %>">Listing no.<%= l.id %></a></p>
+        <p class="title is-5"><a href="/listings/<%= l.id %>"><%= l.title %></a></p>
       </div>
     </div>
 
@@ -23,6 +23,7 @@
       <br>
       <small>11:09 PM - 1 Jan 2016</small>
     </div>
+
   </div>
 </div>
 <%end%>
