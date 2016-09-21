@@ -1,17 +1,7 @@
-<!--  VID -->
-
-
-
 <!-- Hero content: will be in the middle -->
+
 <div class="hero-body">
-	<div class="is-overlay">
-		<video poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" playsinline autoplay muted loop>
-		  <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
-		<source src="http://thenewcode.com/assets/videos/polina.webm" type="video/webm">
-		<source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4">
-		</video>
-	</div>
-  <div class="container has-text-centered ">
+  <div id="motto" class="container has-text-centered ">
     <h1 class="title">
       LIVE THERE
     </h1>
@@ -19,66 +9,81 @@
       Book homes from local hosts in 191+ countries and experience a place like you live there.
     </h2>
     <h3 id="play_button">
-    	<i class="fa fa-play-circle fa-5x" aria-hidden="true"></i>
+      <i class="fa fa-play-circle fa-5x" aria-hidden="true"></i>
     </h3>
   </div>
+  <!-- <div> -->
+    <video autoplay loop="loop" preload="auto" class="photo">
+       <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.mp4" type='video/mp4'>
+         <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.webm" type='video/webm'>
+    </video>
+  <!-- </div> -->
+<!-- TEXT IN THE HERO  -->
 </div>
+
+<!-- SEARCH BOX BOTTOM OF HERO -->
+
 <div class="hero-foot is-fullwidth is-12">
   <nav class="tabs is-boxed is-fullwidth is-12">
     <div class="container is-centered is-12">
-<!--       <ul>
-        <li class="is-active"><a>Overview</a></li>
-        <li><a>Modifiers</a></li>
-        <li><a>Grid</a></li>
-        <li><a>Elements</a></li>
-        <li><a>Components</a></li>
-        <li><a>Layout</a></li>
+ <!-- <ul class="control is-grouped column is-5">
+        <li class="is-active"><i id="search" class="fa fa-search"></i><input class="input is-2" type="text" placeholder="Where to?"></li>
+        <li>      
+          <div class="input is-2" type="text" placeholder="When ?">
+            <div id="checkdate">Checkin</div> 
+            <script>
+              $( "#datepicker" ).datepicker();
+            </script> 
+              <span>
+                <svg id="arrow_when" viewBox="0 0 1000 1000" data-reactid=".3.0.0.0.1.0.0.0.1.0">
+                  <path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z" data-reactid=".3.0.0.0.1.0.0.0.1.0.0">
+                  </path>
+                </svg>
+              </span> 
+            <span>Checkout</span>
+        </div>
+        </li>
+        <li class="input is-1" type="text" placeholder="1 Guest""></li>
+        <li class="input is-1" type="submit"></li>
       </ul> -->
       <p class="control is-grouped column is-5">
-      <i id="search" class="fa fa-search"></i>
+      <i id="search_icon" class="fa fa-search"></i>
       <input class="input is-2" type="text" placeholder="Where to?">
-      <div class="input is-2" type="text" placeholder="When ?">
-	      <div id="checkdate">Checkin    </div>	
-	      <script>
-					$( "#datepicker" ).datepicker();
-				</script>	
-	      	<span>
-	      		<svg id="arrow_when" viewBox="0 0 1000 1000" data-reactid=".3.0.0.0.1.0.0.0.1.0">
-	      			<path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z" data-reactid=".3.0.0.0.1.0.0.0.1.0.0">
-	      			</path>
-	      		</svg>
-	      	</span> 
-	      <span>    Checkout</span>
+      <div id="datebox" class="input is-2" type="text" placeholder="When ?">
+        <div id="checkdate">Checkin</div> 
+        <script>
+          $( "#datepicker" ).datepicker();
+        </script> 
+          <span>
+            <svg id="arrow_when" viewBox="0 0 1000 1000" data-reactid=".3.0.0.0.1.0.0.0.1.0">
+              <path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z" data-reactid=".3.0.0.0.1.0.0.0.1.0.0">
+              </path>
+            </svg>
+          </span> 
+        <span>Checkout</span>
       </div>
 
-      <input class="input is-1" type="text" placeholder="1 Guest">
+      <input id="guest" class="input is-1" type="text" placeholder="1 Guest">
       <input class="input is-1" type="submit">
       </p>
     </div>
   </nav>
 </div>
+</section>
 
 <section #list_index>
 <table class="table is-bordered is-striped is-narrow">
-	<th col="2">Email</th>
-	<th>ID</th>	
+  <th col="2">Email</th>
+  <th>ID</th> 
     <% User.all.each do |u| %>
     <tr>
-    	<td><%= u.email %></td><td><%= u.id %></td>
+      <td><%= u.email %></td><td><%= u.id %></td>
     </tr>  
     <% end %>
 </table>
-</section> 
+</section>   
 
-<!-- a mettre dans le footer -->
 
-<!--           %p.control.column
-            %i#search.fa.fa-search{"aria-hidden" => "true"}         
-            %input.input.is-9{:type => "text", :placeholder => "Where to?"}   -->
 
-            <!-- OR -->
 
-<!--             %p.control.has-icon.container
-              %input.input.is-large{:placeholder => "Where to?", :type => "text"}/
-              %i.fa.fa-search{"aria-hidden" => "true"}    -->         
 

@@ -14,204 +14,209 @@
  *= require_self
  */
 
- body {
- 	justify-content: center;
- 	flex-direction: row;
+ .input { 
+ 	border-radius: 0 !important; 
+ }
+
+
+body {
+	justify-content: center;
+	flex-direction: row;
+	background-color: transparent !important;
+
 	section {
-		div.hero-head {
-		 header { 
-		 	div { 
+	background-color: transparent;	
+
+		.hero-head {
+			background-color: white;	
+		 	z-index: 1002;					
+
+		 	header { 
+		 		// background-color: white;
+	
+			 	div.container { 
 		 		width: 100%;
 		 		margin-left: 0;
-				position: 200px;		 		
-		 		div.nav-right.nav-menu { 
+				position: 200px;
+			 	justify-content: space-around;
+			 	align-content: stretch;
+
+			 		div.nav-left.is-pulled-left { 
+		 			display: flex;
+					background: white;		 			
+
+			 			a { 
+			 			width: 10vw;
+						border-right: 1px solid rgb(220, 224, 224);	
+						background-color: white;		 			
+			 			}
+					}			 		
+
+			 		div.nav-right.nav-menu { 
 		 			width: 100%; 
 		 			display: inline-flex;
-		 				a.button {
-		 					margin-top: 1.25vh;
-		 				}
-		 			}
-		 		div.nav-left.is-pulled-left { 
-		 			display: flex;
-		 			a { width: 10vw; }
-							}
+					background: white;		 			
+
+			 				a.button {
+			 				margin-top: 1.25vh;
+							margin-right: 2vw;
+							margin-bottom: 2vh;			 				
+			 				}
+
+			 				a.nav-item {
+			 				padding-left: 2vw;
+							padding-right: 2vw;
+							border-left: 1px solid rgb(220, 224, 224);		
+			 				}
+
+			 				span {
+			 				padding-right: 10px;
+							margin-right: 10px;
 						}
-					}
+			 		}
 				}
 			}
 		}
-	
- #l_card {
- 	margin: 10px;
- }
 
- body > section > div.container {
-	 	justify-content: space-around;
-	 	align-content: stretch;
-	 	 	padding-left: 8.33vw;
- }
+		.hero-body {
+		margin: 0;
+		background: transparent;
 
- body > section > div.hero-foot.is-fullwidth > nav > div {
- 	display: flex;
- 	justify-content: center;
- 	margin: 0 auto;
- 	width: 80vw;
- 	background-color: rgba(0,0,0,0.5);
- }
+			div {
 
-svg#arrow_when {
-	width: 2vw;
-	height: 2vh;
-	color: red;
-	margin-top: 1vh;
+				video { 
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: auto;
+				height: auto;
+				z-index: 1;
+				transform: translateX(-50%) translateY(-50%);
+				background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+				background-size: cover;
+				transition: 1s opacity;
+				}		
+			}
+
+			#motto {
+				#play_button {
+				display: flex;
+				width: 5vw;
+				margin: 0 auto;
+				color: red;
+				z-index: 1002;
+				}
+			}
+		}	
+
+		.hero-foot.is-fullwidth.is-12 {
+		z-index: 1002;			
+
+		  nav.tabs.is-boxed.is-fullwidth.is-12 {
+			align-items: center;
+			padding-top: 1vh;
+			
+				div.container.is-centered.is-12 {
+				display: flex;
+			 	justify-content: center;
+			 	margin: 0 auto;
+			 	width: 80vw;
+			 	background-color: rgba(0,0,0,0.5);	
+				padding-top: 1.5vh;
+				padding-right: 1.5vw;
+				border-radius: 0;
+
+					p.control.is-grouped.column.is-5 {
+					padding-top: 0;
+					padding-right: 0;
+					margin-bottom: 0;		
+			
+						i { }
+			
+						input { // WHERE TO?
+						margin-left: 1vh;	
+						text-indent: 10px;	
+						border-radius: 0;															
+						}	
+
+						#datebox { // When
+						border-radius: 0;
+
+							#checkdate {
+							margin-top: 1.5vh;
+							}
+			
+							#arrow_when {
+							width: 2vw;
+							height: 2vh;
+							color: red;
+							margin-top: 1vh;
+							}
+							
+						}
+
+						#guest {
+						margin-top: 1.5vh;
+						border-radius: 0;
+						} // How many			
+					}
+
+					input:nth-child(4) { // SUBMIT
+					background-color: rgba(255, 90, 95, 1);
+					border-bottom: 2px solid rgba(250, 0, 8,1);
+					}
+				}
+			}
+		}		
+	}
 }
 
-#play_button {
-	display: flex;
-	width: 5vw;
-	margin: 0 auto;
-}
-
-#search {
-	// position: absolute;
+#search_icon {
 	margin-top: 1vh;
 	margin-left: 1vw;
 	margin-right: 1vh;
 	height: 2vh;
 	width: 2vh;
 	color: white;
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > p.control.is-grouped.column.is-5 > 
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div {
-	display: flex;
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav {
-	align-items: center;
-	padding-top: 1vh;
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > div {
-	align-items: center;
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > input:nth-child(3), body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > input:nth-child(4) {
-		vertical-align: middle;
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > p.control.is-grouped.column.is-5 {
-	padding-top: 0;
-	padding-right: 0;
-	margin-bottom: 0;	
-	input {
-	// margin-top: 1vh;	
-	margin-left: 1vh;	
-	text-indent: 10px;
-	}	
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > input:nth-child(4) {
-	margin-right: 3vw;
-	border: none;
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > div {
-	margin-bottom: 0;
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > p.control.is-grouped.column.is-5, body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > div, body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > input:nth-child(3), body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > input:nth-child(4) {
-	margin-top: 1.5vh;
-	border-radius: none;
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > p.control.is-grouped.column.is-5 > input, body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > div, body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > input:nth-child(3), body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > input:nth-child(4) {
-	border-radius: 0;	
-	border: none;
-}
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > input:nth-child(4) {
-	background-color: rgba(255, 90, 95, 1);
-	border-bottom: 2px solid rgba(250, 0, 8,1);
-}
-
-
-body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > p.control.is-grouped.column.is-5 > input, body > section > div.hero-foot.is-fullwidth.is-12 > nav > div > div {
-border-right: 2px solid rgb(202, 204, 205);
-}
-
-body > section > div.hero-head > header > div > div.nav-right.nav-menu > a.button {
-	margin-right: 2vw;
-	margin-bottom: 2vh;
-}
-
-body > section > div.hero-head > header > div > div.nav-right.nav-menu > span {
-	padding-right: 10px;
-	margin-right: 10px;
-}
-
-body > section > div.hero-head > header > div > div.nav-right.nav-menu > a.nav-item, body > section > div.hero-head > header > div > div.nav-right.nav-menu > a.button, body > section > div.hero-head > header > div > div.nav-right.nav-menu > span {
-	border-right: 1px solid rgb(220, 224, 224);
-}
-
-body > section > div.hero-head > header > div > div.nav-right.nav-menu > a.nav-item {
-	padding-left: 2vw;
-	padding-right: 2vw;
-	border-left: 1px solid rgb(220, 224, 224);	
-}
-
-body > section > div.hero-head > header > div > div.nav-right.nav-menu > span > form > input[type="submit"]:nth-child(2) {
-	margin-right: 10px;
-}
-
-body > section > div.hero-body {
-	background-color: transparent;
-}
-
-body > section > div.hero-head > header > div > div.nav-left.is-pulled-left > a {
-	border-right: 1px solid rgb(220, 224, 224);		
-}
-
-#search_icon {
-	height: 80px;
-	width: 80px;
-	background-color: red;
-	z-index: 1000;
-}
-
-.hero-body {
-  margin: 0;
-  background: transparent;
-}
-
-video { 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    transform: translateX(-50%) translateY(-50%);
- background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
-  background-size: cover;
-  transition: 1s opacity;
+	// background-color: red;
+	color: white;
+	z-index: 1003;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.video_container {
+ position: relative;
+ background:none;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ background-size: cover;
+ text-align: center;
+ color: #fff;
+ padding-top: 130px;
+ min-height: 500px;
+ letter-spacing: 2px;
+ font-family: "Montserrat", sans-serif;
+}
+.video_container h1 {
+ font-size: 50px;
+ line-height: 1.3;
+}
+.video_container h1 span {
+ font-size: 20px;
+ color: #e8f380 ;
+ border-bottom: 2px solid #e8f380 ;
+ padding-bottom: 12px;
+ line-height: 3;
+}
+ 
+.photo {
+ position: absolute;
+ object-fit: contain;
+ z-index: -5;
+ bottom: 0px;
+ left: 0px;
+ width: 100%;
+} 

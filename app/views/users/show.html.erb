@@ -4,7 +4,11 @@
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
-        <img src="http://placehold.it/128x128" alt="Image">
+      <% if @user.avatars.present? %>
+				<%= image_tag (@user.avatars[0].large.url) %>
+			<% else %>
+			<img src="http://placehold.it/64x64" alt="">
+			<% end %>
       </figure>
     </div>
     <div class="media-content">
@@ -46,7 +50,11 @@
     <div class="media">
       <div class="media-left">
         <figure class="image is-32x32">
-          <img src="http://placehold.it/64x64" alt="Image">
+      <% if @user.avatars.present? %>
+          <%= image_tag (@user.avatars[0].thumb.url) %>
+			<% else %>
+						<img src="http://placehold.it/32x32" alt="">
+			<% end %>
         </figure>
       </div>
       <div class="media-content">
