@@ -1,0 +1,20 @@
+<div class="edit">
+<h1>Edit your Listing</h1>
+
+    <%= render 'form' %>
+
+<div class="container is-fluid">
+  <div class="notification">
+  <% if @listing.avatars.present? %>
+    <% @listing.avatars.each do |a| %>
+      <img src="<%= a.large.url %>" alt="">
+      <form action="listings#update" method="put"><a href="/listings/<%= @listing.id %>/edit" class="button is-warning">Edit</a></form>
+      <form action="listings#destroy" method="delete"><a href="/listings/<%= @listing.id %>" class="button is-danger">Delete</a></form>
+    <% end %>
+  <% end %>  
+  </div>
+</div>
+
+
+
+

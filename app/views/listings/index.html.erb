@@ -1,27 +1,67 @@
+<div id="flashes">
+  <% if flash[:notice] || @errors %>
+    <p id="flash_notice" class="messages notice">
+      <%= flash[:notice] %>
+    </p>
+      <%= javascript_tag "$('#flash_notice').effect('highlight',{},1000);" %>
+  <% end %>
+
+  <% if flash[:error] || flash[:errors] %>
+    <p id="flash_errors" class="messages errors"><%= flash[:error] || flash[:errors] %></p>
+    <%= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
+  <% end %>
+
+
+
+    <% if @errors %>
+    <p id="flash_errors" class="messages errors"><%= @errors[0] %></p>
+    <%= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
+  <% end %>
+
+  <% flash[:error] = flash[:errors] = flash[:notice] = nil %>   
+</div><!-- TAGS !!!! -->
+<div id="tag_cloud">
+  <% tag_cloud Listing.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+
 <div class="container is-fullwidth">
-<%@listing.each do |l|%>
+<%@listings.each do |l|%>
 <div id="l_card" class="card is-inline-block">
   <div class="card-image">
     <figure class="image is-4by3">
     <%if l.avatars.present? %>
       <img src="<%=l.avatars[0].large.url%>" alt=""> <!-- WILL BE l.photo when it is really populated -->
-      <%end%>
+    <% else %>
+      <img src="http://placekitten.com/640/480" alt="Image">
+    <%end%>
     </figure>
   </div>
   <div class="card-content">
     <div class="media">
       <div class="media-left">
         <figure class="image is-32x32">
-          <img src="https://unsplash.it/64/64/?random" alt="Image">
+    <%if l.user.avatars.present? %>     
+      <img src="<%=l.user.avatars[0].large.url%>" alt="">
+    <% else %>
+      <img src="http://placekitten.com/32/32" alt="Image">
+    <% end %>
         </figure>
       </div>
       <div class="media-content">
         <p class="title is-5"><a href="/listings/<%= l.id %>"><%= l.title %></a></p>
+    <% if l.user_id == current_user.id %>
+      <a class="button is-warning" href="/listings/<%= l.id %>/edit">EDIT</a>
+      <a class="button is-danger" href="#">DELETE</a>      
+
+      Tags: <%= raw l.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    <% end %>        
       </div>
     </div>
 
-    <div class="content"><%= truncate(l.description) %><br><a href="/users/<%= l.user_id %>">Read Owner's Profile</a>.
-      <a href="#">#travel</a> <a href="#">#dream</a>
+    <div class="content"><%= truncate(l.description) %><br><a href="/users/<%= l.user_id %>">Read Owner's Profile</a>.<br>
+      <br><a href="#">#travel</a> <a href="#">#dream</a>
       <br>
       <small>11:09 PM - 1 Jan 2016</small>
     </div>
@@ -30,3 +70,11 @@
 </div>
 <%end%>
 </div>
+<div>
+<% (1..@nb_pages_needed).each do |page| %>
+<%= link_to page, controller: "listings", action: "index", page: page %>&nbsp;
+<% end %>
+</div>
+
+
+

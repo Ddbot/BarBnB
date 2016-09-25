@@ -1,0 +1,25 @@
+<!-- CANCEL RESERVATION -->
+    <% if  @listing.user_id == current_user.id%>
+      <form action="listings#update" method="put"><a href="/listings/<%= @listing.id %>/edit" class="button is-warning">Edit</a></form><form action="listings#destroy" method="delete"><a href="/listings/<%= @listing.id %>" class="button is-danger">Delete</a></form>
+    <% else %>
+
+    <% end %>        
+<!-- END -->
+        <p class="title is-5">You requested to book <%= @listing.title %> FROM: </p>
+        <p class="subtitle is-6"><%= @reservation.start_date%> to <%= @reservation.end_date %>
+
+<p class="title is-6">The price per night is:<%= @listing.price_per_night %></p>
+<p class="subtitle is-6">The total amount is:<%= @reservation.total_price %></p> 
+
+<!-- HELPER METHOD ? -->
+
+    <div class="content">
+
+      <br>
+      <small>Message sent the <%= @reservation.created_at %></small>
+    </div>
+  </div>
+</div>
+<p><a href="/users/<%= @listing.user_id %>">Back to User's Profile</a></p>
+
+ 

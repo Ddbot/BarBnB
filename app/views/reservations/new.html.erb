@@ -1,0 +1,30 @@
+<div id="flashes">
+  <% if flash[:notice] || @errors %>
+    <p id="flash_notice" class="messages notice">
+    	<%= flash[:notice] %>
+    </p>
+    	<%= javascript_tag "$('#flash_notice').effect('highlight',{},1000);" %>
+  <% end %>
+
+  <% if flash[:error] || flash[:errors] %>
+    <p id="flash_errors" class="messages errors"><%= flash[:error] || flash[:errors] %></p>
+    <%= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
+  <% end %>
+
+
+
+    <% if @errors %>
+    <p id="flash_errors" class="messages errors"><%= @errors[0] %></p>
+    <%= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
+  <% end %>
+
+  <% flash[:error] = flash[:errors] = flash[:notice] = nil %>   
+</div>
+
+    </p>  <%= render partial: '/reservations/form' %>
+		
+
+    <div class="other-links">
+      <%= link_to t(".sign_in"), sign_in_path %>
+    </div>
+    

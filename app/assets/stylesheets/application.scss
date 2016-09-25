@@ -18,6 +18,11 @@
  	border-radius: 0 !important; 
  }
 
+#flash > div {
+ 	font-size: 40px;
+ 	color: red;
+ }
+
 
 body {
 	justify-content: center;
@@ -220,3 +225,18 @@ body {
  left: 0px;
  width: 100%;
 } 
+
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
+
+
+// AJAX DATE & PRICE CALCULATION
+#s_date {}
+#e_date {}
+#totalprice {}
+#p_p_n {} // price per night

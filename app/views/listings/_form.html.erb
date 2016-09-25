@@ -1,4 +1,7 @@
-<div class="control is-vertical">
+  <h2><%= t(".title") %></h2>
+  <%= form_for @listing do |form| %>
+
+  <div class="control is-vertical">
     <%= form.label :Title, class:"label" %>
     <%= form.text_field :title, placeholder: "Enter Title", class: "input is-big", id: "title" %>
 
@@ -31,7 +34,7 @@
 
 
 
-  <div class="form-group">
+<!--   <div class="form-group"> -->
     <%= form.label "Smokers friendly" %>
     <%= form.check_box :isSmoker, class: "form-control", id: "issmoker" %> |
   <!-- </div> -->
@@ -61,7 +64,17 @@
 <!--   <div class="form-group"> -->
     <%= form.label "Swimming Pool" %>
     <%= form.check_box :hasSwimmingPool, class: "form-control", id: "hasswimmingpool" %>
-  </div>
 
-  <%= form.file_field :avatars, multiple: true %>
+    <%= form.label :tag_list %>
+    <%= form.text_field :tag_list %>
+
+    <%= form.file_field :avatars, multiple: true %>
+
+    <div class="submit-field">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+
+  </div>
 

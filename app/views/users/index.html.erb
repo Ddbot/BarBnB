@@ -1,16 +1,25 @@
 <div class="container is-paddingless is-clearfix">
-<%@user.each do |u|%>
+<% @user.each do |u|%>
 <div class="card is-inline-flex">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img src="https://unsplash.it/300/225/?random" alt=""> <!-- WILL BE l.photo when it is really populated -->
+      <% if u.avatars.present? %>
+        <img src="<%= u.avatars[0].large.url%>" alt=""> <!-- WILL BE l.photo when it is really populated -->
+      <% else %>
+        <img src="placehold.it/640x480" alt="">  
+      <% end %>       
     </figure>
   </div>
   <div class="card-content">
     <div class="media">
       <div class="media-left">
+      
         <figure class="image is-32x32">
-          <img src="https://unsplash.it/64/64/?random" alt="Image">
+    <% if u.avatars.present? %>            
+          <img src="<%= u.avatars[0].large.url%>" alt="Image">
+    <% else %>        
+          <img src="http://placekitten.com/32/32" alt="">
+    <% end %>          
         </figure>
       </div>
       <div class="media-content">
@@ -18,7 +27,11 @@
       </div>
     </div>
 
-    <div class="content">Intro text<br><a href="/users/<%= u.id %>">Owner's Profile</a>.
+    <div class="content">Intro text<br><a href="/users/<%= u.id %>">Owner's Profile</a>.<br>
+    <% if u.id == current_user.id %>
+      <a class="button is-warning" href="/users/<%= current_user.id %>/edit">EDIT</a>
+      <a class="button is-danger" href="#">DELETE</a>      
+    <% end %>
       <a href="#">#travel</a> <a href="#">#dream</a>
       <br>
       <small>11:09 PM - 1 Jan 2016</small>

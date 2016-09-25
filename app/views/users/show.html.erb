@@ -18,6 +18,10 @@
           <br>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
         </p>
+    <% if  @user.id == current_user.id%>
+      <form action="listings#update" method="put"><a href="/listings/<%= @user.id %>/edit" class="button is-warning">Edit</a></form>
+      <form action="listings#destroy" method="delete"><a href="/listings/<%= @user.id %>" class="button is-danger">Delete</a></form>
+    <% end %>        
       </div>
       <nav class="level">
         <div class="level-left">
@@ -39,11 +43,15 @@
 
 <div class="show_list is-fullwidth">
 <h1 class="title is-1">User No.<%= @user.id %>'s Listings</h1>
-<%= Listing.all.each do |l| %>
+<%= @user.listings.each do |l| %>
 <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img src="http://placehold.it/300x225" alt="">
+    <% if l.avatars.present? %>
+      <img src="<%= l.avatars[0].large.url %>" alt="">
+      <% else %>
+      <img src="http://placehold.it/640x480" alt="">
+      <% end %>
     </figure>
   </div>
   <div class="card-content">

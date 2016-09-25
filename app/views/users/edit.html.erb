@@ -4,9 +4,26 @@
   <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
   <%= form.file_field :avatars, multiple: true %>
+
+
+<div class="container is-fluid">
+  <div class="notification">
+  <% if @user.avatars.present? %>
+    <% @user.avatars.each do |a| %>
+      <img src="<%= a.square.url %>" alt="">
+      <form action="listings#update" method="put"><a href="/listings/<%= @user.id %>/edit" class="button is-warning">Edit</a></form>
+      <form action="listings#destroy" method="delete"><a href="/listings/<%= @user.id %>" class="button is-danger">Delete</a></form>
+    <% end %>
+  <% end %>  
+  </div>
+</div>
     <div class="submit-field">
       <%= form.submit %>
     </div>
 
   <% end %>
 </div>
+
+
+
+

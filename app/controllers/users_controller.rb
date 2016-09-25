@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :edit, :destroy]
 
 
-  def show
+  def show 
   	return current_user
   end
 
@@ -10,8 +10,13 @@ class UsersController < ApplicationController
     @user= User.all
   end
 
-  def create
+  def new
+    @user = User.new
+  end  
 
+  def create
+    @user = User.find(params[:id])
+    redirect_to @user #"/users/:id"
   end
 
   def edit
@@ -39,7 +44,7 @@ class UsersController < ApplicationController
 
 
 # CREATE PART BELONGING TO CLEARANCE. CANNOT RENAME IT AND MUST BE IN PRIVATE
-  # private 
+  private 
 
     # def user_from_params
     #   email = user_params.delete(:email)
