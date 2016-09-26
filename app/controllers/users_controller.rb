@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :edit, :destroy]
 
+  # http://guides.rubyonrails.org/action_mailer_basics.html
+
 
   def show 
   	return current_user
@@ -16,6 +18,20 @@ class UsersController < ApplicationController
 
   def create
     @user = User.find(params[:id])
+    respond_to do |format|
+      if @user.save 
+        UserMailer.welcome_email(@user).deliver_later # The method welcome_email returns an ActionMailer::MessageDelivery object which can then just be told deliver_now or deliver_later to send itself out.
+        format.html { redirect_to(@user, notice: "User was successfully created.")}
+        format.json { render json: @user, status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+
     redirect_to @user #"/users/:id"
   end
 
@@ -24,10 +40,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
+     if current_user.update(user_params)
       redirect_to user_path(current_user.id)
     else 
-      redirect edit_user_path(current_user.id)
+      redirect_to edit_user_path(current_user.id)
     end    
   end
 
@@ -44,7 +60,6 @@ class UsersController < ApplicationController
 
 
 # CREATE PART BELONGING TO CLEARANCE. CANNOT RENAME IT AND MUST BE IN PRIVATE
-  private 
 
     # def user_from_params
     #   email = user_params.delete(:email)

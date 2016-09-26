@@ -13,8 +13,7 @@
   <h3>Check Out Date:</h3>
       <%= form.label :end_date %>
       <%= form.text_field :end_date %>
-
-
+   
   <div class="control">
     <%= form.label :nb_guests %>
     <%= form.number_field :nb_guests, placeholder: "Number of Guests", class: "nb_guests", id: "nb_guests" %>
@@ -31,18 +30,30 @@
 <p id="chout" class="title is-2"></p>
 
 <script>
-$("#reservation_start_date").datepicker({dateFormat: "yy/mm/dd"});
-$("#reservation_end_date").datepicker({dateFormat: "yy/mm/dd"});
+$("#reservation_start_date").datepicker({ 
+  dateFormat: "yy/mm/dd",
+  yearRange: "2016:+1",
+  minDate: new Date(),
+  maxDate: "+1y +1d"
+  });
+$("#reservation_end_date").datepicker({
+  dateFormat: "yy/mm/dd",
+  yearRange: "2016:+1",
+  minDate: new Date(),
+  maxDate: "+1y +1d"
+  });
+
+
 
   var date_debut, date_fin; 
 
-  var parseDateDebut = function(input){
+  var parseDate = function(input){
     date = new Date(input);
     return date;
   };
 
   $("#reservation_start_date").change(function(){
-    date_debut = parseDateDebut($("#reservation_start_date").val());
+    date_debut = parseDate($("#reservation_start_date").val());
     $("#chin").html(date_debut);
     if (date_fin != undefined){
       $('#totalprice').html(calculateDuration(date_debut, date_fin));
@@ -50,7 +61,7 @@ $("#reservation_end_date").datepicker({dateFormat: "yy/mm/dd"});
   });
 
   $("#reservation_end_date").change(function(){
-    date_fin = parseDateDebut($("#reservation_end_date").val()); 
+    date_fin = parseDate($("#reservation_end_date").val()); 
     $("#chout").html(date_fin);
     if (date_debut != undefined){
       $('#totalprice').html(calculateDuration(date_debut, date_fin));
@@ -65,4 +76,5 @@ $("#reservation_end_date").datepicker({dateFormat: "yy/mm/dd"});
     return total = duration * ppn;
   }
 </script>
+
 

@@ -8,8 +8,13 @@
   <%= form.label :password %>
   <%= form.password_field :password %>
 </div>
-	<%= form.submit %>
-	<% end %>
+
+<div class = "file-field">
+  <%= form.file_field :avatars, multiple: true %>	
+</div>
+
+<%= form.submit %>
+<% end %>
 
 
 

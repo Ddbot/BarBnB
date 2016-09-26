@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
 # This is a fast way to require someting before. See set_listing method in private folder.
   before_action :set_listing, only: [:show, :update, :edit, :destroy]
+  
   def index
     listings_per_page = 10  
     params[:page] = 1 unless params[:page] 

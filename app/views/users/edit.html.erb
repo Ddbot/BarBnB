@@ -3,8 +3,6 @@
   <h2><%= t(".title") %></h2>
   <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
-  <%= form.file_field :avatars, multiple: true %>
-
 
 <div class="container is-fluid">
   <div class="notification">
@@ -17,9 +15,7 @@
   <% end %>  
   </div>
 </div>
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
+
 
   <% end %>
 </div>

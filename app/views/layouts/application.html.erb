@@ -5,8 +5,8 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>  
-
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>   
+  <%= javascript_include_tag 'jquery-ui.multidatespicker', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 
@@ -49,7 +49,16 @@
 
           <span class="nav-item">
             <% if signed_in? %> 
-              <%= button_to 'Sign out', sign_out_path, method: :delete %>
+              <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'button' %>
+              <% if current_user.avatars.present? %>
+                <a href="/users/<%= current_user.id %>" method="get">
+                  <%= image_tag current_user.avatars[0].thumb.url %> 
+                </a>
+              <%else%>
+                <a class="button" href="/users/<%= current_user.id %>" method="get">
+                   <span>View Profile </span><img src="http://placehold.it/64x64" alt=""> 
+                </a>
+              <%end%>
             <% else %>
               <a href="/sign_up" class="nav-item">
                 Signup

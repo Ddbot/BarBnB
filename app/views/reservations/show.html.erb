@@ -8,15 +8,15 @@
         <p class="title is-5">You requested to book <%= @listing.title %> FROM: </p>
         <p class="subtitle is-6"><%= @reservation.start_date%> to <%= @reservation.end_date %>
 
-<p class="title is-6">The price per night is:<%= @listing.price_per_night %></p>
-<p class="subtitle is-6">The total amount is:<%= @reservation.total_price %></p> 
+        <p class="title is-6">The price per night is:<%= @listing.price_per_night %></p>
+        <p class="subtitle is-6">The total amount is:<%= @reservation.total_price %></p> 
 
 <!-- HELPER METHOD ? -->
 
     <div class="content">
 
       <br>
-      <small>Message sent the <%= @reservation.created_at %></small>
+      <small>Listing added the <%= @reservation.created_at %></small>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
-<div class="card">
-  <div class="card-image">
+<div class="card columns">
+  <div class="card-image column">
     <figure class="image is-4by3">
     <%if @listing.avatars.present? %>
         <%= image_tag (@listing.avatars[0].large.url) %>
@@ -36,14 +36,24 @@
     <div class="content">
       <%= @listing.description %><a href="#"><%= @listing.id %></a>.
       <a href="#"><%= @listing.nb_rooms %> rooms</a> 
-      <%= @listing.tag_list.each do |t|%>
+      <% @listing.tag_list.each do |t|%>
       <a href="/tags/<%= t %>">#<%= t %></a>
       <% end %>
       <br>
-      <small>11:09 PM - 1 Jan 2016</small>
+      <small>Listing add on <%= (@listing.created_at).strftime("%d/%m/%Y") %></small>
     </div>
   </div>
 </div>
+
+<% if @listing.user_id == current_user.id %>
+<% reservations = Reservation.where("listing_id = ?", @listing.id) %>
+<span>Listing is booked from:</span>
+  <% reservations.each do |r| %>
+  <span><%= r.start_date.strftime("%d/%m/%Y") %> to <%= r.end_date.strftime("%d/%m/%Y") %></span>
+
+  <% end %>
+<% end %>
+
 <p><a href="/users/<%= @listing.user_id %>">Back to User's Profile</a></p>
 
 

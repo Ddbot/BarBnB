@@ -19,8 +19,8 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
         </p>
     <% if  @user.id == current_user.id%>
-      <form action="listings#update" method="put"><a href="/listings/<%= @user.id %>/edit" class="button is-warning">Edit</a></form>
-      <form action="listings#destroy" method="delete"><a href="/listings/<%= @user.id %>" class="button is-danger">Delete</a></form>
+      <form action="userss#update" method="put"><a href="/users/<%= @user.id %>/edit" class="button is-warning">Edit</a></form>
+      <form action="userss#destroy" method="delete"><a href="/users/<%= @user.id %>" class="button is-danger">Delete</a></form>
     <% end %>        
       </div>
       <nav class="level">
@@ -43,7 +43,7 @@
 
 <div class="show_list is-fullwidth">
 <h1 class="title is-1">User No.<%= @user.id %>'s Listings</h1>
-<%= @user.listings.each do |l| %>
+<% @user.listings.each do |l| %>
 <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
@@ -67,7 +67,13 @@
       </div>
       <div class="media-content">
         <p class="title is-5"><%= l.title%></p>
-        <p class="subtitle is-6">User No.<%= l.user_id %></p>
+        <p class="subtitle is-6">Listing No.<%= l.id %></p>
+        <% reservation = Reservation.where("listing_id = ?", l.id) %>
+        <% if ! reservation.empty? %>
+        <% reservation.each do |r| %>
+        <span>This listing is booked from: <b><%= r.start_date %>  to <%= r.end_date %></b></span>
+        <% end %>
+        <% end %>
       </div>
     </div>
 
