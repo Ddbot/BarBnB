@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927083357) do
+ActiveRecord::Schema.define(version: 20160927083358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20160927083357) do
     t.string   "remember_token",     limit: 128, null: false
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "photo"
     t.json     "avatars"
   end
 
