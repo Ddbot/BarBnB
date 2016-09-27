@@ -11,7 +11,7 @@ require 'faker'
 
 # USERS
 10.times do 
-	User.create(:email=>Faker::Internet.email,:password=>Faker::Internet.password(8),:firstname=>Faker::Name.first_name,:lastname=>Faker::Name.last_name)
+	User.create(:email=>Faker::Internet.email,:password=>"1234",:firstname=>Faker::Name.first_name,:lastname=>Faker::Name.last_name,:avatars=>[["http://loremflickr.com/64/64/paris,girl/all?random=1"],["http://loremflickr.com/64/64/italy,man/all?random=2"],["http://loremflickr.com/64/64/rio,girl/all?random=3"],["http://loremflickr.com/320/240/ny,boy/all?random=4"],["http://loremflickr.com/64/64/manga/all?random=5"],["http://loremflickr.com/64/64/robot/all?random=6"],["http://loremflickr.com/64/64/cat/all?random=7"],["http://loremflickr.com/64/64/dog/all?random=8"]].sample)
 end
 
 # LISTINGS

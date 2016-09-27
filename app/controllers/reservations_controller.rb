@@ -18,13 +18,19 @@ class ReservationsController < ApplicationController
     @reservation.total_price = (@reservation.end_date - @reservation.start_date) * @listing.price_per_night
     @reservation.approval_status = true if @reservation.valid?
     @reservation.save unless (@reservation.approval_status === false)
+    @host = "andry.developper@gmail.com" #LATER User.find(@listing.user_id).email
 
     if @reservation.save
-      flash[:notice] = "Reservation successfully registered"      
-      redirect_to listings_path 
+    #ReservationMailer.notification_email(current_user.email, @host, @reservation.listing.id, @reservation.id).deliver_later
+    # ReservationMailer to send a notification email after save
+    #ReservationJob.perform_now("andry.developper@gmail.com", "andry.developper@gmail.com", 1, 1)
+    ReservationJob.perform_now(current_user.email, @host, @reservation.listing.id, @reservation.id)
+    # call out reservation job to perform the mail sending task after @reservation is successfully saved
+    flash[:notice] = "Reservation successfully registered"      
+    redirect_to listings_path     
     else 
       flash[:error] = @reservation.errors
-      redirect_to new_listing_reservation_path
+      redirect_to new_listing_reservation_path(@listing.id)
     end
   end
 
@@ -36,7 +42,7 @@ class ReservationsController < ApplicationController
   # def confirm_reservation
 
   # end
-end
+# end
 
 private
 
@@ -49,3 +55,4 @@ private
   def set_reservation
     @reservation = Reservation.find(params[:listing_id])
   end
+end

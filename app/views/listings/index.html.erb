@@ -1,5 +1,5 @@
 <div id="flashes">
-  <% if flash[:notice] || @errors %>
+  <% if flash[:notice] || @errors %> 
     <p id="flash_notice" class="messages notice">
       <%= flash[:notice] %>
     </p>
@@ -27,6 +27,7 @@
 </div>
 
 <div class="container is-fullwidth">
+<% if @listings %>
 <%@listings.each do |l|%>
 <div id="l_card" class="card is-inline-block">
   <div class="card-image">
@@ -69,6 +70,7 @@
   </div>
 </div>
 <%end%>
+<% end %>
 </div>
 <div>
 <% (1..@nb_pages_needed).each do |page| %>

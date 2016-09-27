@@ -1,0 +1,12 @@
+Congrats <%= User.find(@listing.user_id).firstname %> !
+=======================================================
+     
+      You have successfully added your listing to BarBnB.
+      Its ID is:  <%= @listing.user_id %>.
+      Its Description is: <%= @listing.description %>
+      And its price is <%= @listing.price_per_night %>
+    
+ 
+To login to the site, just follow this link: <%= @url %>.
+ 
+Thanks for joining and have a great day!

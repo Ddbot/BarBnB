@@ -60,5 +60,6 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'acts-as-taggable-on', '~> 4.0'
+gem 'sidekiq'
 	
 

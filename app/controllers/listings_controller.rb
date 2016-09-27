@@ -20,13 +20,19 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @listing = current_user.listings.new(listing_params)    
-    if @listing.save
-      # I want to go to my listing show page
-       redirect_to listing_path(@listing.id) # This is the way to pass in an id
-    else
-      redirect_to new_listing_path
-    end
+    @listing = current_user.listings.new(listing_params)  
+      respond_to do |format|
+        if @listing.save
+          # I want to send an e-mail and then...
+          ListingMailer.creation_listing_email.deliver_now
+          # I want to go to my listing show page
+          format.html { redirect_to(@listing, notice: "Listing was successfully created !")}
+          format.json { render json: @listing, status: :created, location: @listing }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @listing.errors, status: :unprocessable_entity }
+        end
+      end
   end
 
   def show

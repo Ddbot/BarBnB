@@ -13,7 +13,12 @@
  *= require_tree .
  *= require_self
  */
-
+body > section.hero.is-large > div.hero-head > header > div > div.nav-right.nav-menu > span > a:nth-child(2) {
+	 img {
+	border-radius: 50%;
+	 	z-index: -1;
+	 }
+}
  .input { 
  	border-radius: 0 !important; 
  }

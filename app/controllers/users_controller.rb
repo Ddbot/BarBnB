@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.save 
-        UserMailer.welcome_email(@user).deliver_later # The method welcome_email returns an ActionMailer::MessageDelivery object which can then just be told deliver_now or deliver_later to send itself out.
+        UserMailer.welcome_email(@user).deliver_now # The method welcome_email returns an ActionMailer::MessageDelivery object which can then just be told deliver_now or deliver_later to send itself out.
         format.html { redirect_to(@user, notice: "User was successfully created.")}
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -28,11 +28,6 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-
-
-    redirect_to @user #"/users/:id"
   end
 
   def edit

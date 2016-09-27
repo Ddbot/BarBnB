@@ -19,8 +19,8 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
         </p>
     <% if  @user.id == current_user.id%>
-      <form action="userss#update" method="put"><a href="/users/<%= @user.id %>/edit" class="button is-warning">Edit</a></form>
-      <form action="userss#destroy" method="delete"><a href="/users/<%= @user.id %>" class="button is-danger">Delete</a></form>
+      <form action="userss#update" method="put"><a href="/users/<%= current_user.id %>/edit" class="button is-warning">Edit</a></form>
+      <form action="userss#destroy" method="delete"><a href="/users/<%= current_user.id %>" class="button is-danger">Delete</a></form>
     <% end %>        
       </div>
       <nav class="level">
@@ -40,9 +40,9 @@
   </article>
 </div>
 <br>
-
-<div class="show_list is-fullwidth">
-<h1 class="title is-1">User No.<%= @user.id %>'s Listings</h1>
+<!-- LISTINGS -->
+<div class="show_list">
+<h1 class="title is-1"><%= @user.firstname %>'s Listings</h1> 
 <% @user.listings.each do |l| %>
 <div class="card">
   <div class="card-image">
@@ -58,8 +58,8 @@
     <div class="media">
       <div class="media-left">
         <figure class="image is-32x32">
-      <% if @user.avatars.present? %>
-          <%= image_tag (@user.avatars[0].thumb.url) %>
+      <% if User.find(l.user_id).avatars.present? %>
+          <%= image_tag User.find(l.user_id).avatars[0].thumb.url %>
 			<% else %>
 						<img src="http://placehold.it/32x32" alt="">
 			<% end %>
@@ -68,6 +68,22 @@
       <div class="media-content">
         <p class="title is-5"><%= l.title%></p>
         <p class="subtitle is-6">Listing No.<%= l.id %></p>
+        <!-- FICHE -->
+    
+        <% if  l.user_id == current_user.id %>
+          <form action="listings#update" method="put">
+          <a href="/listings/<%= l.id %>/edit" class="button is-warning">Edit</a>
+          </form>
+          <form action="listings#destroy" method="delete">
+          <a href="/listings/<%= l.id %>" class="button is-danger">Delete</a>
+          </form>
+        <% else %>
+          <a href="/listings/<%= l.id %>/reservations/new">BOOK IT!</a>
+        <% end %>   
+
+
+        <!-- FIN FICHE  -->
+
         <% reservation = Reservation.where("listing_id = ?", l.id) %>
         <% if ! reservation.empty? %>
         <% reservation.each do |r| %>
@@ -87,3 +103,4 @@
 <% end %>
 </div>
 </div>
+
