@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :edit, :destroy]
+  before_action :set_user, only: [:show, :edit, :destroy] # :update,
 
   # http://guides.rubyonrails.org/action_mailer_basics.html
 

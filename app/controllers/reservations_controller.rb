@@ -21,13 +21,16 @@ class ReservationsController < ApplicationController
     @host = "andry.developper@gmail.com" #LATER User.find(@listing.user_id).email
 
     if @reservation.save
+    flash[:notice] = "Thank you for booking with BarBnB"      
+    render 'confirmation'
+
     #ReservationMailer.notification_email(current_user.email, @host, @reservation.listing.id, @reservation.id).deliver_later
     # ReservationMailer to send a notification email after save
     #ReservationJob.perform_now("andry.developper@gmail.com", "andry.developper@gmail.com", 1, 1)
     ReservationJob.perform_now(current_user.email, @host, @reservation.listing.id, @reservation.id)
     # call out reservation job to perform the mail sending task after @reservation is successfully saved
-    flash[:notice] = "Reservation successfully registered"      
-    redirect_to listings_path     
+    # flash[:notice] = "Reservation successfully registered"      
+    # redirect_to listings_path     
     else 
       flash[:error] = @reservation.errors
       redirect_to new_listing_reservation_path(@listing.id)
@@ -56,3 +59,6 @@ private
     @reservation = Reservation.find(params[:listing_id])
   end
 end
+
+
+

@@ -1,35 +1,45 @@
-<%= form_for @user do |form| %>
 
-<br>
 
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
-</div>
 
-<div class="text-field">
-  <%= form.label :firstname %>
-  <%= form.text_field :firstname %>
-</div>
+<!-- NEW FORM -->
 
-<div class="text-field">
-  <%= form.label :lastname %>
-  <%= form.text_field :lastname %>
-</div>
+  <%= form_for @user do |form| %>
 
-<div class="text-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
+  <div class="text-field control is-vertical">
+    <%= form.label :email, class:"label" %>
+    <%= form.text_field :email, placeholder: "Enter Email", class: "input is-big", id: "title" %>
 
-<!-- <div class = "file-field"> -->
-	<%= form.label :avatars %>
-  <%= form.file_field :avatars %>	
-<!-- </div> -->
 
-<%= form.submit %>
 
-<% end %>
+    <%= form.label :firstname, class:"label" %>
+    <%= form.text_field :firstname, placeholder: "Enter First Name", class: "input is-grouped", id: "firstname" %>
+
+  </div>
+
+  <div class="control">
+    <%= form.label :lastname %>
+    <%= form.text_area :lastname, placeholder: "Enter Last Name", class: "input is-grouped", id: "lastname" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control", id: "password" %>
+  </div>  
+
+
+  <div class="form-group">
+    <%= form.label "Avatar" %>
+    <%= form.file_field :avatars, id: "avatar" %>
+  </div>
+
+<hr>
+ 
+   <div class="submit-field">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+
 
 
 

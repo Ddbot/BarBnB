@@ -1,5 +1,6 @@
 class Reservation < ActiveRecord::Base
 	belongs_to :listing
+	has_many :payments
 
 	validates :start_date, presence: true
 	validates :end_date, presence: true

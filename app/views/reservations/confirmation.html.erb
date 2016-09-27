@@ -1,23 +1,18 @@
-<h3>Your Reservation</h3>
+<h3>Your Reservation has been accepted and registered !</h3>
 
-<ul class="list-group">
-  <li class="list-group-item">
     <p>Listing name: <%= link_to @reservation.listing.title, listing_path(@reservation.listing) %></p>
     <p>No. of Guest: <%= @reservation.nb_guests%> </p>
     <p>Location: <%= @reservation.listing.location %> </p>
-    <p>Check-in Date: <%= @reservation.start_date %></p>
+    <p>From: <%= @reservation.start_date %></p>
 
-    <p>Checkout Date: <%= @reservation.end_date %></p>
+    <p>To: <%= @reservation.end_date %></p>
 
     <strong>Payment Status:</strong>
-      <% if @reservation.payments.where(status: :authorized).count == 0%>
+      <% if (! @reservation.payments) || (@reservation.payments.where(status: :authorized).count == 0)  %>
       <span class="button is-danger"> NOT PAID </span>
 
-       <%= link_to 'Pay Now' , new_payment_path + "?id=" + reservation.id.to_s, class: "btn btn-warning"  %>
+       <%= link_to 'Pay Now' , new_payment_path + "?id=" + @reservation.id.to_s, class: "button is-warning"  %>
       <% else %>
       <span class="button is-success">PAID</span>
       <% end %>
-  </li>
-</ul>
-
- 
+  

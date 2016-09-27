@@ -40,9 +40,9 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # SIDEKIQ CONFIG
-  Sidekiq.configure_server do |config|
-    config.poll_interval = 2
-  end
+  # Sidekiq.configure_server do |config|
+  #   config.poll_interval = 2
+  # end
 
   #this is clearance mailer
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
