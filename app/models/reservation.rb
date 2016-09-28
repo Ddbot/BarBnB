@@ -34,17 +34,13 @@ class Reservation < ActiveRecord::Base
 
   	reservation.each do |r|
   		booked_array = *(r.start_date..r.end_date)  
-			intersection =  (booked_array & desired_array) - desired_array	
+			intersection =  (booked_array & desired_array)
 			booked_days << intersection 	 
-	    	if ! intersection.flatten.empty?
-	    		self.errors.add(:start_date, "Not available at these dates. Please change your reservation dates.") 
-	  		end 
-  		end
-	  
-		if (reservation.none? or booked_days.flatten.count === 0)
-			return true 
-		else 
-			return false
+		end
+	  if booked_days.flatten.empty?
+	  	return true
+  	else
+	    self.errors.add(:start_date, "Not available at these dates. Please change your reservation dates.")  
 		end
 	end
 end

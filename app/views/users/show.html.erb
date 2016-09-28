@@ -5,7 +5,7 @@
     <div class="media-left">
       <figure class="image is-64x64">
       <% if @user.avatars.present? %>
-				<%= image_tag (@user.avatars[0].large.url) %>
+				<img src="<%= l.avatars[0].large.url %>" alt="">
 			<% else %>
 			<img src="http://placehold.it/64x64" alt="">
 			<% end %>
@@ -42,7 +42,7 @@
 <br>
 <!-- LISTINGS -->
 <div class="show_list">
-<h1 class="title is-1"><%= @user.firstname %>'s Listings</h1> 
+<h1 class="title is-1"><%= @user.firstname ||= "User no.#{@user.id}" %>'s Listings</h1> 
 <% @user.listings.each do |l| %>
 <div class="card">
   <div class="card-image">
@@ -72,10 +72,9 @@
     
         <% if  l.user_id == current_user.id %>
           <form action="listings#update" method="put">
-          <a href="/listings/<%= l.id %>/edit" class="button is-warning">Edit</a>
-          </form>
+            <%= link_to "Edit", listing_path(l.id), :method => :update, :id => "edit_listing", :class => "button is-warning", remote: true %>
           <form action="listings#destroy" method="delete">
-          <a href="/listings/<%= l.id %>" class="button is-danger">Delete</a>
+            <%= link_to "Delete", listing_path(l.id), :confirm => "Are you sure?", :method => :delete, :class => "button is-danger", remote: true %>      
           </form>
         <% else %>
           <a href="/listings/<%= l.id %>/reservations/new">BOOK IT!</a>
@@ -83,6 +82,8 @@
 
 
         <!-- FIN FICHE  -->
+
+
 
         <% reservation = Reservation.where("listing_id = ?", l.id) %>
         <% if ! reservation.empty? %>
@@ -103,4 +104,16 @@
 <% end %>
 </div>
 </div>
+
+        <!-- YOUR RESERVATIONS -->
+
+        <b>SOON A NICE TABLE HERE !! AND EDITABLE AND DELETABLE RESERVATIONS</b>
+
+        <% reservation = Reservation.where("user_id = ?", current_user.id) %>
+          <% reservation.each do |res| %>
+          <span><b>You have booked <%= res.listing.title %> (no.<%= res.listing.id %>) from <%= res.start_date %> to <%= res.end_date %>
+         </b></span><% end %>
+
+
+
 

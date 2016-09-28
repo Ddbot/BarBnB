@@ -62,6 +62,7 @@ gem 'fog'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'sidekiq'
 gem 'braintree'
+gem 'searchkick'
 
 	
 

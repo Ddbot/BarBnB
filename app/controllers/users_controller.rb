@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def update
-     if current_user.update(user_params)
+     if current_user.update_attributes!(user_params)
       redirect_to user_path(current_user.id)
     else 
       redirect_to edit_user_path(current_user.id)
@@ -53,20 +53,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-
 # CREATE PART BELONGING TO CLEARANCE. CANNOT RENAME IT AND MUST BE IN PRIVATE
 
-    # def user_from_params
-    #   email = user_params.delete(:email)
-    #   password = user_params.delete(:password)
-    #   firstname = user_params.delete(:firstname)
-    #   lastname = user_params.delete(:lastname)
+  #   def user_from_params
+  #     email = user_params.delete(:email)
+  #     password = user_params.delete(:password)
+  #     firstname = user_params.delete(:firstname)
+  #     lastname = user_params.delete(:lastname)
 
-    #   Clearance.configuration.user_model.new(user_params).tap do |user|
-    #     user.email = email
-    #     user.password = password
-    #     user.firstname = firstname
-    #     user.lastname = lastname
-    # end
+  #     Clearance.configuration.user_model.new(user_params).tap do |user|
+  #       user.email = email
+  #       user.password = password
+  #       user.firstname = firstname
+  #       user.lastname = lastname
+  #   end
   # end   
 end

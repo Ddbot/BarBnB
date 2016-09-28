@@ -1,30 +1,38 @@
 <div class="card columns">
   <div class="card-image column">
     <figure class="image is-4by3">
-    <%if @listing.avatars.present? %>
-        <%= image_tag (@listing.avatars[0].large.url) %>
-        <%end%>
+      <% if @listing.avatars.present? %>
+        <img src="<%= l.avatars[0].large.url %>" alt="">
+      <% else %>
+        <img src="http://placehold.it/640x480" alt="">
+      <% end %>
     </figure>
   </div>
+</div>  
   <div class="card-content">
     <div class="media">
       <div class="media-left">
         <figure class="image is-32x32">
-    <%if @listing.avatars.present? %>        
-        <%= image_tag (@listing.avatars[0].large.url) %>
+    <%if User.find(@listing.user_id).avatars.present? %>        
+        <%= image_tag (@listing.avatars[0].thumb.url) %>
     <% else %>
       <img src="http://placehold.it/32x32" alt="">
     <%end%>        
         </figure>
+      </div>  
     <% if  @listing.user_id == current_user.id %>
       <form action="listings#update" method="put">
         <a href="/listings/<%= @listing.id %>/edit" class="button is-warning">Edit</a>
       </form>
       <form action="listings#destroy" method="delete">
-        <a href="/listings/<%= @listing.id %>" class="button is-danger">Delete</a>
+        <%= link_to "Delete", listing_path(@listing), :confirm => "Are you sure?", :method => :delete, :class => "button is-danger", remote: true %>      
       </form>
     <% else %>
+
+    <!-- SHOW RESERVATION PAGE -->
     <a href="/listings/<%= @listing.id %>/reservations/new">BOOK IT!</a>
+
+    <!-- END -->
     <% end %>        
       </div>
       <div class="media-content">
@@ -35,25 +43,28 @@
 
     <div class="content">
       <%= @listing.description %><a href="#"><%= @listing.id %></a>.
-      <a href="#"><%= @listing.nb_rooms %> rooms</a> 
       <% @listing.tag_list.each do |t|%>
       <a href="/tags/<%= t %>">#<%= t %></a>
       <% end %>
       <br>
-      <small>Listing add on <%= (@listing.created_at).strftime("%d/%m/%Y") %></small>
+      <small>Listing added on <%= (@listing.created_at).strftime("%d/%m/%Y") %></small>
     </div>
   </div>
 </div>
 
 <% if @listing.user_id == current_user.id %>
-<% reservations = Reservation.where("listing_id = ?", @listing.id) %>
-<span>Listing is booked from:</span>
-  <% reservations.each do |r| %>
-  <span><%= r.start_date.strftime("%d/%m/%Y") %> to <%= r.end_date.strftime("%d/%m/%Y") %></span>
+   <% reservation = Reservation.where("listing_id = ?", @listing.id) %>
+        <% if ! reservation.empty? %>
+          <% reservation.each do
 
-  <% end %>
+          SHOW RESERVATION PAGE # |r| %>
+          <span>This listing is booked from: <b><%= r.start_date %>  to <%= r.end_date %></b></span>
+          <!-- END -->
+          <% end %>
+        <% end %>       
 <% end %>
-
+</div>
+</div>
 <p><a href="/users/<%= @listing.user_id %>">Back to User's Profile</a></p> 
 
 

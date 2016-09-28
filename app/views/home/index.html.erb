@@ -9,15 +9,15 @@
       Book homes from local hosts in 191+ countries and experience a place like you live there.
     </h2>
     <h3 id="play_button">
-      <i class="fa fa-play-circle fa-5x" aria-hidden="true"></i>
+      <i class="fa fa-play-circle is-fullwidth" aria-hidden="true"></i>
     </h3>
   </div>
-  <!-- <div> -->
-    <video autoplay loop="loop" preload="auto" class="photo">
+  <div id="videocover">
+    <video id="video" loop="loop" preload="auto" class="photo">
        <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.mp4" type='video/mp4'>
          <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.webm" type='video/webm'>
     </video>
-  <!-- </div> -->
+  </div>  
 <!-- TEXT IN THE HERO  -->
 </div>
 
@@ -29,7 +29,11 @@
 
       <p class="control is-grouped column is-5">
       <i id="search_icon" class="fa fa-search"></i>
-      <input class="input is-2" type="text" placeholder="Where to?">
+      <%= form_for Listing.new, method: :get, url: search_path do |f| %>
+      <%= text_field_tag :term, params[:term], class: "is-fullwidth", placeholder:"Where to?" %>
+      <%= f.submit 'search', class: 'button is-primary' %>
+      <% end %>      
+      <!-- <input class="input is-2" type="text" placeholder="Where to?"> -->
       <div id="datebox" class="input is-2" type="text" placeholder="When ?">
         <div id="checkdate">Checkin</div> 
           <span>
@@ -51,17 +55,7 @@
 
 <a class="button is-fullwidth" href="/listings" style="background-color: green">See Listings</a>
 
-<section #list_index>
-<table class="table is-bordered is-striped is-narrow">
-  <th col="2">Email</th>
-  <th>ID</th> 
-    <% User.all.each do |u| %>
-    <tr>
-      <td><%= u.email %></td><td><%= u.id %></td>
-    </tr>  
-    <% end %>
-</table>
-</section>   
+<% render '/listings/search' %>
 
 
 

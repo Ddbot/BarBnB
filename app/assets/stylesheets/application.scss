@@ -13,6 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+#videocover {
+	background-color: transparent;
+	visibility: hidden;
+}
+
+ #motto > h1 {
+ 	color: rgba(255, 255, 255, 0.6);
+ 	font-size: 4vw;
+ 	font-weight: 700;
+ }
+
+ #motto > h2 {
+ 	color: rgba(255, 255, 255, 0.8);
+ 	font-size: 1.5vw;
+ 	font-weight: 300;
+ 	line-height: 6vh;
+ }
 body > section.hero.is-large > div.hero-head > header > div > div.nav-right.nav-menu > span > a:nth-child(2) {
 	 img {
 	border-radius: 50%;
@@ -111,15 +129,21 @@ body {
 			}
 
 			#motto {
-				#play_button {
-				display: flex;
-				width: 5vw;
 				margin: 0 auto;
-				color: red;
-				z-index: 1002;
+				width: 100vw;
+				#play_button { 
+					font-size: 5vw;
+					i {
+						margin: 0 auto;
+						color: rgba(255,255,255,0.6);
+						z-index: 1002;
+						i:before {
+							height:100%;
+							}
+						}
+					}
 				}
-			}
-		}	
+			}	
 
 		.hero-foot.is-fullwidth.is-12 {
 		z-index: 1002;			

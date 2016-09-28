@@ -11,9 +11,7 @@
     <%= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
   <% end %>
 
-
-
-    <% if @errors %>
+  <% if @errors %>
     <p id="flash_errors" class="messages errors"><%= @errors[0] %></p>
     <%= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
   <% end %>
@@ -73,7 +71,7 @@
 <% end %>
 </div>
 <div>
-<% (1..5).each do |page| %> <!-- @nb_pages_needed remplacer le 5-->
+<% (1..5).each do |page| %> <!-- DYNAMIQUEMENT CHANGER PLYUS TARD !! -->
 <%= link_to page, controller: "listings", action: "index", page: page %>&nbsp;
 <% end %>
 </div>

@@ -9,7 +9,10 @@
 
     <strong>Payment Status:</strong>
       <% if (! @reservation.payments) || (@reservation.payments.where(status: :authorized).count == 0)  %>
-      <span class="button is-danger"> NOT PAID </span>
+      <span class="button is-primary"> NOT PAID </span>
+      <span class="button is-danger">
+        <%= link_to "Cancel this reservation", reservation_path(@reservation), :confirm => "Are you sure?", :method => :delete, :class => "button is-danger", remote: true %>      
+      </span>
 
        <%= link_to 'Pay Now' , new_payment_path + "?id=" + @reservation.id.to_s, class: "button is-warning"  %>
       <% else %>
