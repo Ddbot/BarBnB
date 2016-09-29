@@ -19,8 +19,8 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
         </p>
     <% if  @user.id == current_user.id%>
-      <form action="userss#update" method="put"><a href="/users/<%= current_user.id %>/edit" class="button is-warning">Edit</a></form>
-      <form action="userss#destroy" method="delete"><a href="/users/<%= current_user.id %>" class="button is-danger">Delete</a></form>
+      <form action="users#update" method="put"><a href="/users/<%= current_user.id %>/edit" class="button is-warning">Edit</a></form>
+      <form action="users#destroy" method="delete"><a href="/users/<%= current_user.id %>" class="button is-danger">Delete</a></form>
     <% end %>        
       </div>
       <nav class="level">
