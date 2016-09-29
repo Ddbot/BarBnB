@@ -89,7 +89,7 @@
   <li><%= link_to 'Log in', sign_in_path %></li>
 <% end %>
     </ul> 
- <% if current_user.avatars.present? %>
+ <% if signed_in? and current_user.avatars.present? %>
   <li><a href="/users/<%= current_user.id %>" method="get"><%= image_tag current_user.avatars[0].thumb.url %></a></li>    
 <%else%>
   <li><a class="" href="/users/<%= current_user.id %>" method="get"><img src="http://placehold.it/64x64" alt=""></a></li>
