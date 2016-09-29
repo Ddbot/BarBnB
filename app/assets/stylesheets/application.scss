@@ -14,210 +14,214 @@
  *= require_self
  */
 
-#videocover {
-	background-color: transparent;
-	visibility: hidden;
-}
+// #videocover {
+// 	background-color: transparent;
+// 	visibility: hidden;
+// }
 
- #motto > h1 {
- 	color: rgba(255, 255, 255, 0.6);
- 	font-size: 4vw;
- 	font-weight: 700;
- }
+//  #motto > h1 {
+//  	color: rgba(255, 255, 255, 0.6);
+//  	font-size: 4vw;
+//  	font-weight: 700;
+//  }
 
- #motto > h2 {
- 	color: rgba(255, 255, 255, 0.8);
- 	font-size: 1.5vw;
- 	font-weight: 300;
- 	line-height: 6vh;
- }
-body > section.hero.is-large > div.hero-head > header > div > div.nav-right.nav-menu > span > a:nth-child(2) {
-	 img {
-	border-radius: 50%;
-	 	z-index: -1;
-	 }
-}
- .input { 
- 	border-radius: 0 !important; 
- }
+//  #motto > h2 {
+//  	color: rgba(255, 255, 255, 0.8);
+//  	font-size: 1.5vw;
+//  	font-weight: 300;
+//  	line-height: 6vh;
+//  }
+// body > section.hero.is-large > div.hero-head > header > div > div.nav-right.nav-menu > span > a:nth-child(2) {
+// 	 img {
+// 	border-radius: 50%;
+// 	 	z-index: -1;
+// 	 }
+// }
+//  .input { 
+//  	border-radius: 0 !important; 
+//  }
 
-#flash > div {
- 	font-size: 40px;
- 	color: red;
- }
+// #flash > div {
+//  	font-size: 40px;
+//  	color: red;
+//  }
 
 
-body {
-	justify-content: center;
-	flex-direction: row;
-	background-color: transparent !important;
+// body {
+// 	justify-content: center;
+// 	flex-direction: row;
+// 	background-color: transparent !important;
 
-	section {
-	background-color: transparent;	
+// 	section {
+// 	background-color: transparent;	
 
-		.hero-head {
-			background-color: white;	
-		 	z-index: 1002;					
+// 		.hero-head {
+// 			background-color: white;	
+// 		 	z-index: 1002;					
 
-		 	header { 
-		 		// background-color: white;
+// 		 	header { 
+// 		 		// background-color: white;
 	
-			 	div.container { 
-		 		width: 100%;
-		 		margin-left: 0;
-				position: 200px;
-			 	justify-content: space-around;
-			 	align-content: stretch;
+// 			 	div.container { 
+// 		 		width: 100%;
+// 		 		margin-left: 0;
+// 				position: 200px;
+// 			 	justify-content: space-around;
+// 			 	align-content: stretch;
 
-			 		div.nav-left.is-pulled-left { 
-		 			display: flex;
-					background: white;		 			
+// 			 		div.nav-left.is-pulled-left { 
+// 		 			display: flex;
+// 					background: white;		 			
 
-			 			a { 
-			 			width: 10vw;
-						border-right: 1px solid rgb(220, 224, 224);	
-						background-color: white;		 			
-			 			}
-					}			 		
+// 			 			a { 
+// 			 			width: 10vw;
+// 						border-right: 1px solid rgb(220, 224, 224);	
+// 						background-color: white;		 			
+// 			 			}
+// 					}			 		
 
-			 		div.nav-right.nav-menu { 
-		 			width: 100%; 
-		 			display: inline-flex;
-					background: white;		 			
+// 			 		div.nav-right.nav-menu { 
+// 		 			width: 100%; 
+// 		 			display: inline-flex;
+// 					background: white;		 			
 
-			 				a.button {
-			 				margin-top: 1.25vh;
-							margin-right: 2vw;
-							margin-bottom: 2vh;			 				
-			 				}
+// 			 				a.button {
+// 			 				margin-top: 1.25vh;
+// 							margin-right: 2vw;
+// 							margin-bottom: 2vh;			 				
+// 			 				}
 
-			 				a.nav-item {
-			 				padding-left: 2vw;
-							padding-right: 2vw;
-							border-left: 1px solid rgb(220, 224, 224);		
-			 				}
+// 			 				a.nav-item {
+// 			 				padding-left: 2vw;
+// 							padding-right: 2vw;
+// 							border-left: 1px solid rgb(220, 224, 224);		
+// 			 				}
 
-			 				span {
-			 				padding-right: 10px;
-							margin-right: 10px;
-						}
-			 		}
-				}
-			}
-		}
+// 			 				span {
+// 			 				padding-right: 10px;
+// 							margin-right: 10px;
+// 						}
+// 			 		}
+// 				}
+// 			}
+// 		}
 
-		.hero-body {
-		margin: 0;
-		background: transparent;
+// 		.hero-body {
+// 		margin: 0;
+// 		background: transparent;
 
-			div {
+// 			div {
 
-				video { 
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				min-width: 100%;
-				min-height: 100%;
-				width: auto;
-				height: auto;
-				z-index: 1;
-				transform: translateX(-50%) translateY(-50%);
-				background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
-				background-size: cover;
-				transition: 1s opacity;
-				}		
-			}
+// 				video { 
+// 				position: absolute;
+// 				top: 50%;
+// 				left: 50%;
+// 				min-width: 100%;
+// 				min-height: 100%;
+// 				width: auto;
+// 				height: auto;
+// 				z-index: 1;
+// 				transform: translateX(-50%) translateY(-50%);
+// 				background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+// 				background-size: cover;
+// 				transition: 1s opacity;
+// 				}		
+// 			}
 
-			#motto {
-				margin: 0 auto;
-				width: 100vw;
-				#play_button { 
-					font-size: 5vw;
-					i {
-						margin: 0 auto;
-						color: rgba(255,255,255,0.6);
-						z-index: 1002;
-						i:before {
-							height:100%;
-							}
-						}
-					}
-				}
-			}	
+// 			#motto {
+// 				margin: 0 auto;
+// 				width: 100vw;
+// 				#play_button { 
+// 					font-size: 5vw;
+// 					&:hover{
+// 						cursor: pointer;
+// 					}	
+				
+// 					i {
+// 						margin: 0 auto;
+// 						color: rgba(255,255,255,0.6);
+// 						z-index: 1002;
+// 						i:before {
+// 							height:100%;
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}	
 
-		.hero-foot.is-fullwidth.is-12 {
-		z-index: 1002;			
+// 		.hero-foot.is-fullwidth.is-12 {
+// 		z-index: 1002;			
 
-		  nav.tabs.is-boxed.is-fullwidth.is-12 {
-			align-items: center;
-			padding-top: 1vh;
+// 		  nav.tabs.is-boxed.is-fullwidth.is-12 {
+// 			align-items: center;
+// 			padding-top: 1vh;
 			
-				div.container.is-centered.is-12 {
-				display: flex;
-			 	justify-content: center;
-			 	margin: 0 auto;
-			 	width: 80vw;
-			 	background-color: rgba(0,0,0,0.5);	
-				padding-top: 1.5vh;
-				padding-right: 1.5vw;
-				border-radius: 0;
+// 				div.container.is-centered.is-12 {
+// 				display: flex;
+// 			 	justify-content: center;
+// 			 	margin: 0 auto;
+// 			 	width: 80vw;
+// 			 	background-color: rgba(0,0,0,0.5);	
+// 				padding-top: 1.5vh;
+// 				padding-right: 1.5vw;
+// 				border-radius: 0;
 
-					p.control.is-grouped.column.is-5 {
-					padding-top: 0;
-					padding-right: 0;
-					margin-bottom: 0;		
+// 					p.control.is-grouped.column.is-5 {
+// 					padding-top: 0;
+// 					padding-right: 0;
+// 					margin-bottom: 0;		
 			
-						i { }
+// 						i { }
 			
-						input { // WHERE TO?
-						margin-left: 1vh;	
-						text-indent: 10px;	
-						border-radius: 0;															
-						}	
+// 						input { // WHERE TO?
+// 						margin-left: 1vh;	
+// 						text-indent: 10px;	
+// 						border-radius: 0;															
+// 						}	
 
-						#datebox { // When
-						border-radius: 0;
+// 						#datebox { // When
+// 						border-radius: 0;
 
-							#checkdate {
-							margin-top: 1.5vh;
-							}
+// 							#checkdate {
+// 							margin-top: 1.5vh;
+// 							}
 			
-							#arrow_when {
-							width: 2vw;
-							height: 2vh;
-							color: red;
-							margin-top: 1vh;
-							}
+// 							#arrow_when {
+// 							width: 2vw;
+// 							height: 2vh;
+// 							color: red;
+// 							margin-top: 1vh;
+// 							}
 							
-						}
+// 						}
 
-						#guest {
-						margin-top: 1.5vh;
-						border-radius: 0;
-						} // How many			
-					}
+// 						#guest {
+// 						margin-top: 1.5vh;
+// 						border-radius: 0;
+// 						} // How many			
+// 					}
 
-					input:nth-child(4) { // SUBMIT
-					background-color: rgba(255, 90, 95, 1);
-					border-bottom: 2px solid rgba(250, 0, 8,1);
-					}
-				}
-			}
-		}		
-	}
-}
+// 					input:nth-child(4) { // SUBMIT
+// 					background-color: rgba(255, 90, 95, 1);
+// 					border-bottom: 2px solid rgba(250, 0, 8,1);
+// 					}
+// 				}
+// 			}
+// 		}		
+// 	}
+// }
 
-#search_icon {
-	margin-top: 1vh;
-	margin-left: 1vw;
-	margin-right: 1vh;
-	height: 2vh;
-	width: 2vh;
-	color: white;
-	// background-color: red;
-	color: white;
-	z-index: 1003;
-}
+// #search_icon {
+// 	margin-top: 1vh;
+// 	margin-left: 1vw;
+// 	margin-right: 1vh;
+// 	height: 2vh;
+// 	width: 2vh;
+// 	color: white;
+// 	// background-color: red;
+// 	color: white;
+// 	z-index: 1003;
+// }
 
 
 
@@ -255,17 +259,17 @@ body {
  width: 100%;
 } 
 
-#tag_cloud {
-  width: 400px;
-  line-height: 1.6em;
-  .s { font-size: 0.8em; }
-  .m { font-size: 1.2em; }
-  .l { font-size: 1.8em; }
-}
+// #tag_cloud {
+//   width: 400px;
+//   line-height: 1.6em;
+//   .s { font-size: 0.8em; }
+//   .m { font-size: 1.2em; }
+//   .l { font-size: 1.8em; }
+// }
 
 
-// AJAX DATE & PRICE CALCULATION
-#s_date {}
-#e_date {}
-#totalprice {}
-#p_p_n {} // price per night
+// // AJAX DATE & PRICE CALCULATION
+// #s_date {}
+// #e_date {}
+// #totalprice {}
+// #p_p_n {} // price per night

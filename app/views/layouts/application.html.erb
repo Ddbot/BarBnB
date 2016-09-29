@@ -3,12 +3,11 @@
 <head>
   <title>BarBnB</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>   
-  <%= javascript_include_tag 'jquery-ui.multidatespicker', 'data-turbolinks-track' => true %>
-  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
-  <script src="https://use.fontawesome.com/61b8a9195a.js"></script>
+  <%= stylesheet_link_tag 'app', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'foundation', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 
@@ -25,54 +24,87 @@
 </head>
 
 <body>
-<section class="hero is-large" style="background-color:transparent;">
-  <!-- Hero header: will stick at the top -->
-  <div class="hero-head">
-    <header class="nav">
-      <div class="container">
-        <div class="nav-left is-pulled-left">
-          <a class="nav-item" href="/">
-          <%=image_tag("logo.png", alt: "Logo Image")%>
-          </a>
-        </div>
-        <div class="nav-toggle">
-          <span class="control has-icon container">
-            <!-- <input class="input is-large" placeholder="Where to?" type="text"> -->
-            <i id="search_icon" class="fa fa-search" aria-hidden="true"></i>                     
-          </span>
-        </div>
-        <div class="nav-right nav-menu">
-          <a class="button" href="/listings/new" class="nav-item is-active">
-            Become a Host
-          </a>
-          <a class="nav-item">
-            Help
-          </a>
+<!-- FOUNDATION -->
 
-          <span class="nav-item">
-            <% if signed_in? %> 
-              <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'button' %>
-              <% if current_user.avatars.present? %>
-                <a href="/users/<%= current_user.id %>" method="get">
-                  <%= image_tag current_user.avatars[0].thumb.url %> 
-                </a>
-              <%else%>
-                <a class="button" href="/users/<%= current_user.id %>" method="get">
-                   <span>View Profile </span><img src="http://placehold.it/64x64" alt=""> 
-                </a>
-              <%end%>
-            <% else %>
-              <a href="/sign_up" class="nav-item">
-                Signup
-              </a>
-              <%= link_to "Connect With Facebook", "/auth/facebook" %>
-              <%= link_to 'Log in', sign_in_path %>
-            <% end %>              
-          </span>
+
+<div data-sticky-container>
+  <div class="top-bar sticky" data-sticky data-options="marginTop:0;" style="width:100%">
+    <div class="top-bar-left">
+      
+      <div>
+        <a href="/">
+          <%=image_tag("logo.png", alt: "Logo Image")%>
+        </a>
       </div>
-    </header>
+
+      <ul>
+        <li><i id="search_icon" class="fa fa-search" aria-hidden="true"></i></li>                     
+        <li><input type="text" placeholder="Where to?"></li>
+      </ul>
+      </div>
+      
+      <div class="title-bar-right">
+      <!-- DROP DOWN -->
+<ul class="dropdown menu" data-dropdown-menu>
+  <li>
+    <a href="#">Become a Host</a>
+    <ul class="menu">
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Manage Listings</a></li>
+      <li><a href="/listings/new">List Your Space</a></li>  
+      <li><a href="/reservations/index">Your Reservations</a></li>
+      <li><a href="#">Transaction History</a></li>
+      <li><a href="#">Reviews</a></li>
+      <li><a href="#">History</a></li>
+    </ul>
+  </li>
+
+  <li>
+    <a href="#">Messages</a>
+    <ul class="menu">
+      <li><a href="#">Messages</a></li>
+      <li><a href="#">Notifications</a></li>
+    </ul>
+  </li>
+
+  <li>
+    <a href="#">Help</a>
+  </li>
+
+  <li>
+<% if signed_in? %>   
+    <a href="#"><%= current_user.firstname || current_user.id %></a>
+    <ul class="menu">
+      <li><a href="/reservations/<%= current_user.id %>">Your Trips</a></li>
+      <li><a href="#">Wish Lists</a></li>
+      <li><a href="/users/<%= current_user.id %>">Edit Profile</a></li>
+      <li><a href="#">Refer a Friend</a></li>
+      <li><a href="#">Account Settings</a></li>
+      <li><a href="#">Business Travek</a></li>
+      <li><a href="#">My Guide Book</a></li>
+      <li><%= link_to 'Sign out', sign_out_path, method: :delete, class: 'button' %></li>     
+<% else %>
+  <li><a href="/sign_up" class="nav-item">Signup</a></li>
+  <li><%= link_to "Connect With Facebook", "/auth/facebook" %></li>
+  <li><%= link_to 'Log in', sign_in_path %></li>
+<% end %>
+    </ul> 
+ <% if current_user.avatars.present? %>
+  <li><a href="/users/<%= current_user.id %>" method="get"><%= image_tag current_user.avatars[0].thumb.url %></a></li>    
+<%else%>
+  <li><a class="" href="/users/<%= current_user.id %>" method="get"><img src="http://placehold.it/64x64" alt=""></a></li>
+<%end%>
+    
+</ul>   
+
+      </div>             
+
+    </div>
+
   </div>
 
+</div>
+<!-- FOUNDATION END -->
     <div id="flash">
       <% flash.each do |key, value| %>
         <div class="flash <%= key %>"><%= value %></div>
@@ -84,4 +116,14 @@
 <%= yield %>
 <!-- Latest compiled and minified JavaScript -->
   <!-- Hero footer: will stick at the bottom -->
-</section></body></html>
+    </section>
+  <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js' %>   
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
+  <%= javascript_include_tag 'https://js.braintreegateway.com/v2/braintree.js', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'foundation','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'what-input','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>    
+  </body>
+</html>
+

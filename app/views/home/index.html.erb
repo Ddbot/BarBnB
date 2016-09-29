@@ -13,7 +13,7 @@
     </h3>
   </div>
 
-    <video id="video" loop="loop" preload="auto" class="photo">
+    <video autoplay id="movie1" loop="loop" preload="auto" class="photo">
        <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.mp4" type='video/mp4'>
          <source src="https://a0.muscache.com/airbnb/static/P1-background-vid-compressed.webm" type='video/webm'>
     </video>
@@ -56,6 +56,15 @@
 <a class="button is-fullwidth" href="/listings" style="background-color: green">See Listings</a>
 
 <% render '/listings/search' %>
+
+<script>
+jQuery( document ).ready(function($) {
+  vid = document.getElementById("movie1");
+    $('#play_button').click(function() {
+        vid.paused ? vid.play() : vid.pause();
+    });
+});
+</script>
 
 
 

@@ -1,0 +1,11 @@
+<h3>Your Reservations</h3>
+
+<% listing = Listing.where("user_id = ?", current_user.id) %>
+<% if listing %>
+<% listing.each do |l| %>
+  <% reservation = Reservation.where("listing_id = ?", l.id) %>
+    <% reservation.each do |r| %>
+      <p><%= r.listing.title %> is booked from <%= r.start_date %> to <%= r.end_date %></p>
+    <% end %>
+<% end %>
+<% end %>

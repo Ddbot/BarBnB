@@ -1,3 +1,38 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	div.sticky-container {
+	 div {
+	 	display: flex;
+	 	background-color: white;
+	 	div.title-bar-left {
+	 	 div:nth-child(1) {
+	 	  a {
+	 	   img {
+				width: 6vw;
+	 	   			}
+	 	 			}
+	 			}
+	 		}
+		
+		div.title-bar-right {
+				span {
+				  a:nth-child(2) {
+				    img {
+							width: 26px;
+							height: 26px;
+							border-radius: 50%;
+				    }
+		}
+	}
+}
+}}}
+
+body > div.sticky-container > div > div.title-bar-right > ul > li:nth-child(5) > a > img { width: 24px; height: 24px; border-radius: 50%; }
+body > div.sticky-container > div > div.title-bar-right > ul 														 { padding-left: 180px; }
+body > div.sticky-container > div > div.top-bar-left > div > a > img  									 { width: 6vw; }
+li, ul, input { list-style: none; background-color: transparent; }
+.top-bar  { background-color: white;}
+

@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
 	before_action :set_reservation, only: [:update, :edit] # :destroy
 
 	def index 
-		# We don't display a list of Reservations !
+    @listing = Listing.all
   end	
 
 	def new
@@ -49,8 +49,11 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.find(params[:id])
-    @listing = Listing.find(@reservation.listing_id)    
+    # @user = Reservation.where("user_id = ?", current_user.id)
+    # @reservation = Reservation.find(params[:id])
+    # @listing = Listing.find(@reservation.listing_id)   
+    @listing = Listing.all 
+    render 'index'
   end
 
   def destroy
